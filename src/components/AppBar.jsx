@@ -3,6 +3,8 @@ import { View, StyleSheet, ScrollView } from 'react-native';
 import Constants from 'expo-constants';
 import theme from '../theme';
 import AppBarTab from './AppBarTab';
+import { AUTHORIZED_USER } from '../graphql/queries';
+import { useQuery } from '@apollo/react-hooks';
 
 const styles = StyleSheet.create({
   container: {
@@ -15,10 +17,15 @@ const styles = StyleSheet.create({
 });
 
 const AppBar = () => {
+  const { data } = useQuery(AUTHORIZED_USER, {
+    fetchPolicy: 'cache-and-network'
+  });
+
   return <View style={styles.container}>
-    <ScrollView horizontal alwaysBounceHorizontal="false" showsHorizontalScrollIndicator="false">
+    <ScrollView horizontal alwaysBounceHorizontal={ false } showsHorizontalScrollIndicator={ false }>
       <AppBarTab path="/">Repositories</AppBarTab>
-      <AppBarTab path="/signin">Sign In</AppBarTab>
+      { data && !data.authorizedUser && <AppBarTab path="/signin">Sign In</AppBarTab> }
+      { data && data.authorizedUser && <AppBarTab path="/signout">Sign Out</AppBarTab> }
     </ScrollView>
   </View>;
 };

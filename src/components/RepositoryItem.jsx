@@ -29,10 +29,8 @@ const styles = StyleSheet.create({
   repoHeadline: {
     flexDirection: "column",
     alignItems: "flex-start",
-    padding: 10
-  },
-  repoName: {
-    
+    padding: 10,
+    flex: 1
   },
   repoDescription: {
     paddingTop: 6
@@ -65,7 +63,6 @@ const shortNumber = (number) => {
 };
 
 const RepositoryItem = ({ repository }) => {
-  console.log(repository);
   return (
     <View style={ styles.card }>
       <View style={ styles.repoInfo }>

@@ -19,19 +19,20 @@ const styles = StyleSheet.create({
   }
 });
 
-const SignInForm = ({ onSubmit }) => {
+const SignUpForm = ({ onSubmit }) => {
   
   return (
     <View>
-      <FormikTextInput testID="usernameInput" name="username" placeholder="Username" autoCapitalize="none" autoCompleteType="username" autoCorrect={ false } />
-      <FormikTextInput testID="passwordInput" name="password" placeholder="Password" secureTextEntry={ true } autoCompleteType="password" />
+      <FormikTextInput name="username" placeholder="Username" autoCapitalize="none" autoCompleteType="username" autoCorrect={ false } />
+      <FormikTextInput name="password" placeholder="Password" secureTextEntry={ true } autoCompleteType="password" />
+      <FormikTextInput name="passwordConfirm" placeholder="Password confirmation" secureTextEntry={ true } autoCompleteType="password" />
       <TouchableWithoutFeedback testID="confirmButton" onPress={onSubmit}>
         <View style={ styles.confirmButton }>
-          <Text fontWeight="bold" fontSize="subheading" style={ styles.confirmText }>Sign In</Text>
+          <Text fontWeight="bold" fontSize="subheading" style={ styles.confirmText }>Sign Up</Text>
         </View>
       </TouchableWithoutFeedback>
     </View>
   );
 };
 
-export default SignInForm;
+export default SignUpForm;

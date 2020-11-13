@@ -5,7 +5,11 @@ import RepositoryList from './RepositoryList';
 import SignIn from './SignIn';
 import SignOut from './SignOut';
 import AppBar from './AppBar';
+import CreateReview from './CreateReview';
+import RepositoryDetails from './RepositoryDetails';
 import theme from '../theme';
+import SignUp from './SignUp';
+import MyReviews from './MyReviews';
 
 const styles = StyleSheet.create({
   container: {
@@ -20,8 +24,20 @@ const Main = () => {
     <View style={styles.container}>
       <AppBar />
       <Switch>
+        <Route path="/repository/:id">
+          <RepositoryDetails />
+        </Route>
+        <Route path="/createReview">
+          <CreateReview />
+        </Route>
+        <Route path="/myReviews" exact>
+          <MyReviews />
+        </Route>
         <Route path="/signin" exact>
           <SignIn />
+        </Route>
+        <Route path="/signup" exact>
+          <SignUp />
         </Route>
         <Route path="/signout" exact>
           <SignOut />
